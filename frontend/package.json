@@ -12,12 +12,8 @@
   "dependencies": {
     "@hookform/resolvers": "^3.6.0",
     "@maptiler/sdk": "^2.1.0",
-<<<<<<< HEAD
-    "@radix-ui/react-label": "^2.1.0",
-=======
     "@radix-ui/react-popover": "^1.1.1",
     "@radix-ui/react-select": "^2.1.1",
->>>>>>> 17ed4846c9fe42c0028321705e52e444a2d74cf5
     "@radix-ui/react-slot": "^1.1.0",
     "axios": "^1.7.2",
     "class-variance-authority": "^0.7.0",
