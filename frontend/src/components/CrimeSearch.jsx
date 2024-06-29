@@ -22,7 +22,7 @@ const CrimeSearch = () => {
   const [date, setDate] = useState(null);
 
   return (
-    <div className="relative flex-1 grid gap-2 pt-2 mr-2 border-b-2 border-slate-700 pb-2">
+    <div className="relative flex-1 grid gap-2 pt-2 ml-2 mr-2 md:ml-0 border-b-2 border-slate-700 pb-2">
       <div className="relative flex-1 flex gap-2">
         <Search className="absolute left-2.5 top-2.5 h-5 w-5 dark:text-zinc-50" />
         <span className="hidden sm:flex absolute right-24">
@@ -95,7 +95,7 @@ const CrimeSearch = () => {
             <Button
               variant={"outline"}
               className={cn(
-                "justify-start text-left font-normal",
+                "w-full justify-start text-left font-normal",
                 !date && "text-muted-foreground"
               )}>
               <CalendarIcon className="mr-2 h-4 w-4" />

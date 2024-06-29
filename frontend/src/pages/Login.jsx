@@ -1,4 +1,4 @@
-import { isLoggedInAtom } from "@/atoms/userData";
+// import { isLoggedInAtom } from "@/atoms/userData";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -16,18 +16,19 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { loginSchema } from "@/schema";
+import { loginSchema } from "../../schema.js";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import { Loader2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
-import { useRecoilState } from "recoil";
+import { FaGoogle } from "react-icons/fa";
+// import { useRecoilState } from "recoil";
 import { toast } from "sonner";
 
 const LoginForm = () => {
-  const [isLoggedIn, setIsLoggedIn] = useRecoilState(isLoggedInAtom);
+  // const [isLoggedIn, setIsLoggedIn] = useRecoilState(isLoggedInAtom);
   const [isLoading, setIsLoading] = useState(false);
   const form = useForm({
     resolver: zodResolver(loginSchema),
@@ -38,11 +39,11 @@ const LoginForm = () => {
   });
 
   const navigate = useNavigate();
-  useEffect(() => {
-    if (isLoggedIn) {
-      navigate("/books");
-    }
-  }, []);
+  // useEffect(() => {
+  // if (isLoggedIn) {
+  //   navigate("/books");
+  // }
+  // }, []);
 
   const onSubmit = (values) => {
     setIsLoading(true);
@@ -55,13 +56,18 @@ const LoginForm = () => {
       success: (response) => {
         const { token } = response.data;
         localStorage.setItem("token", token);
-        setIsLoggedIn(true);
+        // setIsLoggedIn(true);
         navigate("/books");
         return response.data.message;
       },
       error: (error) => error.response.data.message,
       finally: () => setIsLoading(false),
     });
+  };
+
+  const handleGoogleLogin = () => {
+    // window.location.href = "/auth/google";
+    window.open("/auth/google");
   };
 
   return (
@@ -98,11 +104,6 @@ const LoginForm = () => {
                       <FormItem className="grid">
                         <div className="flex">
                           <FormLabel className="text-left">Password</FormLabel>
-                          <Link
-                            href="#"
-                            className="ml-auto inline-block text-sm underline">
-                            Forgot your password?
-                          </Link>
                         </div>
                         <FormControl>
                           <Input
@@ -111,6 +112,12 @@ const LoginForm = () => {
                             {...field}
                           />
                         </FormControl>
+                        <Link
+                          href="#"
+                          className="ml-auto inline-block text-sm underline"
+                        >
+                          Forgot your password?
+                        </Link>
                         <FormMessage />
                       </FormItem>
                     )}
@@ -135,11 +142,17 @@ const LoginForm = () => {
               </CardContent>
             </form>
           </Form>
-          <div className="w-full text-center">
+          <div className="mt-4 text-center text-sm mb-4">
+            <Button onClick={handleGoogleLogin}>
+              Log in with Google &nbsp;
+              <FaGoogle />
+            </Button>
+          </div>
+          {/* <div className="w-full text-center">
             <h3 className="text-zinc-400">user: john.doe@example.com</h3>
             <h3 className="text-zinc-400">admin: john.doe2@example.com</h3>
             <h3 className="text-zinc-400">password: password123</h3>
-          </div>
+          </div> */}
         </Card>
       </div>
     </>

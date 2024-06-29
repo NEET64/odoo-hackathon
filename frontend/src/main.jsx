@@ -5,6 +5,8 @@ import "../index.css";
 
 import App from "./pages/App";
 import Homepage from "./pages/Homepage";
+import Login from "./pages/Login";
+import { Toaster } from "sonner";
 import Crimepage from "./pages/Crimepage";
 
 const router = createBrowserRouter([
@@ -22,8 +24,21 @@ const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: "/login",
+    element: <Login />,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <RouterProvider router={router} />
+  <>
+    <Toaster
+      gap="8"
+      offset="20px"
+      position="top-center"
+      theme={"light"}
+      richColors
+    />
+    <RouterProvider router={router} />
+  </>
 );
