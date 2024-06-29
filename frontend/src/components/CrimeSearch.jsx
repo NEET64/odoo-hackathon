@@ -15,11 +15,43 @@ import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { Calendar } from "./ui/calendar";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const CrimeSearch = () => {
   const [location, setLocation] = useState("");
   const [crimeType, setCrimeType] = useState("");
   const [date, setDate] = useState(null);
+
+  const formatDate = (dateString) => {
+    if(!dateString) return null;
+    const date = new Date(dateString);
+    const day = date.getDate().toString().padStart(2, "0");
+    const month = (date.getMonth() + 1).toString().padStart(2, "0");
+    const year = date.getFullYear();
+    return `${day}-${month}-${year}`;
+  };
+
+  const navigate = useNavigate();
+  const handleSearch = () => {
+    console.log(location, crimeType, date);
+    const dateString = formatDate(date);
+
+    const params = new URLSearchParams({
+      location: location,
+      crimeType: crimeType,
+      date: dateString,
+    });
+
+    const url = `${import.meta.env.VITE_BACKEND_URL}/api/crime?${params.toString()}`;
+    console.log(url);
+
+    axios.get(url).then((response) => {
+      console.log(response);
+      navigate("/crime");
+    });
+
+  };
 
   return (
     <div className="relative flex-1 grid gap-2 pt-2 mr-2 border-b-2 border-slate-700 pb-2">
@@ -39,7 +71,7 @@ const CrimeSearch = () => {
             setLocation(e.target.value.trim());
           }}
         />
-        <Button variant="outline">Search</Button>
+        <Button variant="outline" onClick={handleSearch}>Search</Button>
       </div>
 
       <div className="flex gap-2">
@@ -95,7 +127,7 @@ const CrimeSearch = () => {
             <Button
               variant={"outline"}
               className={cn(
-                "justify-start text-left font-normal",
+                "w-full justify-start text-left font-normal",
                 !date && "text-muted-foreground"
               )}>
               <CalendarIcon className="mr-2 h-4 w-4" />
