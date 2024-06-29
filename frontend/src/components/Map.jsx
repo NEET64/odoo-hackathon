@@ -1,13 +1,17 @@
 import React, { useRef, useEffect, useState } from "react";
 import * as maptilersdk from "@maptiler/sdk";
+
 import "@maptiler/sdk/dist/maptiler-sdk.css";
 
 const Map = () => {
   const mapContainer = useRef(null);
   const map = useRef(null);
-  const tokyo = { lng: 139.753, lat: 35.6844 };
+  // 21.224185, 72.885255;
+  // 23.022505 72.5713621
+
+  const tokyo = { lng: 72.885255, lat: 21.224185 };
   const [zoom] = useState(14);
-  maptilersdk.config.apiKey = "YOUR_MAPTILER_API_KEY_HERE";
+  maptilersdk.config.apiKey = import.meta.env.VITE_MAPTILER_API_KEY;
 
   useEffect(() => {
     if (map.current) return; // stops map from intializing more than once
@@ -18,6 +22,10 @@ const Map = () => {
       center: [tokyo.lng, tokyo.lat],
       zoom: zoom,
     });
+
+    new maptilersdk.Marker({ color: "#FF0000" })
+      .setLngLat([72.885255, 21.224185])
+      .addTo(map.current);
   }, [tokyo.lng, tokyo.lat, zoom]);
 
   return (

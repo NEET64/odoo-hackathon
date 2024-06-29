@@ -590,7 +590,7 @@ const Homepage = () => {
   return (
     <div>
       {/* <Globe /> */}
-      {/* <Map /> */}
+      <Map />
       {data.map((item, index) => (
         // <div key={index}>{item.typeOfCrime}</div>
         <CrimeCard key={index} crime={item} />
