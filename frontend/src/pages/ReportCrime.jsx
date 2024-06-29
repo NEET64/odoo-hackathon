@@ -22,7 +22,6 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "sonner";
-import { crimeSchema } from "../../schema";
 import {
   Select,
   SelectContent,
@@ -33,7 +32,7 @@ import {
 } from "@/components/ui/select";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-const AddCrime = () => {
+const ReportCrime = () => {
   const form = useForm({
     // resolver: zodResolver(crimeSchema),
     defaultValues: {
@@ -261,4 +260,4 @@ const AddCrime = () => {
   );
 };
 
-export default AddCrime;
+export default ReportCrime;

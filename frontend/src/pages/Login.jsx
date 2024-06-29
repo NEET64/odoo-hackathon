@@ -46,7 +46,7 @@ const LoginForm = () => {
       success: (response) => {
         const { token } = response.data;
         localStorage.setItem("token", token);
-        setIsLoggedIn(true);
+        // setIsLoggedIn(true);
         navigate("/books");
         return response.data.message;
       },
@@ -94,11 +94,6 @@ const LoginForm = () => {
                       <FormItem className="grid">
                         <div className="flex">
                           <FormLabel className="text-left">Password</FormLabel>
-                          <Link
-                            href="#"
-                            className="ml-auto inline-block text-sm underline">
-                            Forgot your password?
-                          </Link>
                         </div>
                         <FormControl>
                           <Input
@@ -107,6 +102,12 @@ const LoginForm = () => {
                             {...field}
                           />
                         </FormControl>
+                        <Link
+                          href="#"
+                          className="ml-auto inline-block text-sm underline"
+                        >
+                          Forgot your password?
+                        </Link>
                         <FormMessage />
                       </FormItem>
                     )}

@@ -2,8 +2,6 @@ const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth2').Strategy;
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt'); // For password hashing
-const express =require("express");
-const app = express();
 
 // User model (replace with your actual database interaction)
 const User = require('../model/User.js'); // Adjust path as needed
