@@ -4,14 +4,14 @@ import { useCallback, useEffect, useRef } from "react";
 import { useSpring } from "react-spring";
 
 const GLOBE_CONFIG = {
-  width: 800,
-  height: 800,
+  width: 1500,
+  height: 1500,
   onRender: () => {},
   devicePixelRatio: 2,
   phi: 0,
   theta: 0.3,
   dark: 0,
-  diffuse: 0.4,
+  diffuse: 1,
   mapSamples: 16000,
   mapBrightness: 1.2,
   baseColor: [1, 1, 1],
@@ -31,7 +31,7 @@ export default function Globe({ className, config = GLOBE_CONFIG }) {
     config: {
       mass: 1,
       tension: 280,
-      friction: 40,
+      friction: 100,
       precision: 0.001,
     },
   }));
@@ -83,12 +83,12 @@ export default function Globe({ className, config = GLOBE_CONFIG }) {
   return (
     <div
       className={cn(
-        "fixed opacity-50 inset-0 mx-auto aspect-[1/1] w-full max-w-[600px]",
+        " opacity-50 inset-0 mx-auto aspect-[1/1] w-full max-w-[500px]",
         className
       )}>
       <canvas
         className={cn(
-          "h-full w-full opacity-0 transition-opacity duration-500 [contain:layout_paint_size]"
+          "h-full w-full transition-opacity duration-500 [contain:layout_paint_size]"
         )}
         ref={canvasRef}
         onPointerDown={(e) =>

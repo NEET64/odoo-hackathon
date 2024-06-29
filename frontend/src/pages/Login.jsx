@@ -139,6 +139,11 @@ const LoginForm = () => {
                 Sign up
               </Link>
             </div>
+
+            <div className="w-full text-center">
+            <h3 className="text-zinc-400">user: s@gmail.com</h3>
+            <h3 className="text-zinc-400">password: 123456</h3>
+          </div>
           </Form>
         </Card>
       </div>

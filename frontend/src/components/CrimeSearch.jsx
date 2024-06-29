@@ -18,9 +18,9 @@ import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const CrimeSearch = () => {
-  const [location, setLocation] = useState("");
-  const [crimeType, setCrimeType] = useState("");
+const CrimeSearch = ({setCrimes}) => {
+  const [location, setLocation] = useState(null);
+  const [crimeType, setCrimeType] = useState(null);
   const [date, setDate] = useState(null);
 
   const formatDate = (dateString) => {
@@ -47,14 +47,14 @@ const CrimeSearch = () => {
     console.log(url);
 
     axios.get(url).then((response) => {
-      console.log(response);
-      navigate("/crime");
+      console.log(response.data);
+      setCrimes(response.data);
     });
 
   };
 
   return (
-    <div className="relative flex-1 grid gap-2 pt-2 mr-2 border-b-2 border-slate-700 pb-2">
+    <div className="relative flex-1 grid gap-2 pt-2 ml-2 mr-2 md:ml-0 border-b-2 border-slate-700 pb-2">
       <div className="relative flex-1 flex gap-2">
         <Search className="absolute left-2.5 top-2.5 h-5 w-5 dark:text-zinc-50" />
         <span className="hidden sm:flex absolute right-24">

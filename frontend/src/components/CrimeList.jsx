@@ -577,13 +577,15 @@ let data = [
     },
   },
 ];
-const CrimeList = () => {
+const CrimeList = ({crimes, setCord}) => {
   return (
-    <div className="flex flex-col gap-2 overflow-hidden text-slate-50 border-slate-50">
-      {data.map((item, index) => (
-        // <div key={index}>{item.typeOfCrime}</div>
-        <CrimeCard key={index} crime={item} />
-      ))}
+    <div className="flex flex-col gap-2 md:-ml-2 overflow-hidden text-slate-50 border-slate-50">
+      <div className="max-h-[calc(100vh-190px)] overflow-y-auto">
+        {crimes.map((item, index) => (
+          // <div key={index}>{item.typeOfCrime}</div>
+          <CrimeCard key={index} crime={item} setCoordinates={setCord} />
+        ))}
+      </div>
     </div>
   );
 };
