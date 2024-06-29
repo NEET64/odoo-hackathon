@@ -13,11 +13,6 @@ const validateSignup = (req, res, next) => {
         return res.status(400).json({ message: 'Password must be at least 6 characters long' });
     }
 
-    // Validate name
-    if (!name || !validator.isLength(name, { min: 2 })) {
-        return res.status(400).json({ message: 'Name must be at least 2 characters long' });
-    }
-
     next(); // Proceed to the next middleware or route handler
 };
 
