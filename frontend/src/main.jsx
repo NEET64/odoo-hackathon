@@ -5,8 +5,6 @@ import "../index.css";
 
 import App from "./pages/App";
 import Homepage from "./pages/Homepage";
-import Login from "./pages/Login";
-import { Toaster } from "sonner";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +14,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Homepage />,
+      },
+      {
+        path: "/crime",
+        element: <Crimepage />,
       },
     ],
   },

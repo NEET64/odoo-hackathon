@@ -12,14 +12,21 @@
   "dependencies": {
     "@hookform/resolvers": "^3.6.0",
     "@maptiler/sdk": "^2.1.0",
+<<<<<<< HEAD
     "@radix-ui/react-label": "^2.1.0",
+=======
+    "@radix-ui/react-popover": "^1.1.1",
+    "@radix-ui/react-select": "^2.1.1",
+>>>>>>> 17ed4846c9fe42c0028321705e52e444a2d74cf5
     "@radix-ui/react-slot": "^1.1.0",
     "axios": "^1.7.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "cobe": "^0.6.3",
+    "date-fns": "^3.6.0",
     "lucide-react": "^0.399.0",
     "react": "^18.3.1",
+    "react-day-picker": "^8.10.1",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.52.0",
     "react-icons": "^5.2.1",
