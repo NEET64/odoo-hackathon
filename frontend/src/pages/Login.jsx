@@ -1,4 +1,3 @@
-import { isLoggedInAtom } from "@/atoms/userData";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -16,18 +15,17 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { loginSchema } from "@/schema";
+import { loginSchema } from "../../schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import { Loader2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
-import { useRecoilState } from "recoil";
 import { toast } from "sonner";
+import { FaGoogle } from "react-icons/fa";
 
 const LoginForm = () => {
-  const [isLoggedIn, setIsLoggedIn] = useRecoilState(isLoggedInAtom);
   const [isLoading, setIsLoading] = useState(false);
   const form = useForm({
     resolver: zodResolver(loginSchema),
@@ -36,13 +34,6 @@ const LoginForm = () => {
       password: "",
     },
   });
-
-  const navigate = useNavigate();
-  useEffect(() => {
-    if (isLoggedIn) {
-      navigate("/books");
-    }
-  }, []);
 
   const onSubmit = (values) => {
     setIsLoading(true);
@@ -62,6 +53,11 @@ const LoginForm = () => {
       error: (error) => error.response.data.message,
       finally: () => setIsLoading(false),
     });
+  };
+
+  const handleGoogleLogin = () => {
+    // window.location.href = "/auth/google";
+    window.open(`${import.meta.env.VITE_BACKEND_URL}/auth/google`, "_self");
   };
 
   return (
@@ -126,20 +122,23 @@ const LoginForm = () => {
                     </Button>
                   )}
                 </div>
-                <div className="mt-4 text-center text-sm">
-                  Don&apos;t have an account?{" "}
-                  <Link to="/signup" className="underline">
-                    Sign up
-                  </Link>
-                </div>
               </CardContent>
             </form>
+
+            <div className="text-center text-sm mb-4 mx-6 -mt-4">
+              <Button className="w-full" onClick={handleGoogleLogin}>
+                Log in with Google &nbsp;
+                <FaGoogle />
+              </Button>
+            </div>
+
+            <div className="m-4 text-center text-sm">
+              Don&apos;t have an account?{" "}
+              <Link to="/signup" className="underline">
+                Sign up
+              </Link>
+            </div>
           </Form>
-          <div className="w-full text-center">
-            <h3 className="text-zinc-400">user: john.doe@example.com</h3>
-            <h3 className="text-zinc-400">admin: john.doe2@example.com</h3>
-            <h3 className="text-zinc-400">password: password123</h3>
-          </div>
         </Card>
       </div>
     </>

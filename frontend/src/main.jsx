@@ -6,6 +6,8 @@ import "../index.css";
 import App from "./pages/App";
 import Homepage from "./pages/Homepage";
 import Crimepage from "./pages/Crimepage";
+import LoginForm from "./pages/Login";
+import AddCrime from "./pages/AddCrime";
 
 const router = createBrowserRouter([
   {
@@ -20,7 +22,15 @@ const router = createBrowserRouter([
         path: "/crime",
         element: <Crimepage />,
       },
+      {
+        path: "/add-crime",
+        element: <AddCrime />,
+      },
     ],
+  },
+  {
+    path: "/login",
+    element: <LoginForm />,
   },
 ]);
 
