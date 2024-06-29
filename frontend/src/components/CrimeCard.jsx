@@ -1,6 +1,6 @@
 const CrimeCard = ({ crime }) => {
   return (
-    <div className="border-2 border-black rounded-lg p-4 flex flex-col justify-center items-center m-2">
+    <div className="border-2 rounded-lg p-4 flex flex-col justify-center items-center m-2">
       <h1>{crime.typeOfCrime}</h1>
       <p>{crime.location.address}</p>
       <p>{crime.time}</p>

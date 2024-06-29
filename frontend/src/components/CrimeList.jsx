@@ -1,6 +1,4 @@
-import CrimeCard from "@/components/CrimeCard";
-import Globe from "@/components/Globe";
-import Map from "@/components/Map";
+import CrimeCard from "./CrimeCard";
 
 let data = [
   {
@@ -579,20 +577,9 @@ let data = [
     },
   },
 ];
-
-const Homepage = () => {
-  navigator.geolocation.getCurrentPosition((position) => {
-    const { latitude, longitude } = position.coords;
-    console.log(latitude, longitude);
-    console.log(position);
-  });
-
+const CrimeList = () => {
   return (
-    <div>
-      {/* <Globe /> */}
-      <div className="relative w-full h-96 p-2">
-        <Map />
-      </div>
+    <div className="flex flex-col gap-2 overflow-hidden text-slate-50 border-slate-50">
       {data.map((item, index) => (
         // <div key={index}>{item.typeOfCrime}</div>
         <CrimeCard key={index} crime={item} />
@@ -601,4 +588,4 @@ const Homepage = () => {
   );
 };
 
-export default Homepage;
+export default CrimeList;

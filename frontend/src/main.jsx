@@ -5,6 +5,7 @@ import "../index.css";
 
 import App from "./pages/App";
 import Homepage from "./pages/Homepage";
+import Crimepage from "./pages/Crimepage";
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Homepage />,
+      },
+      {
+        path: "/crime",
+        element: <Crimepage />,
       },
     ],
   },
