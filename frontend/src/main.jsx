@@ -5,6 +5,9 @@ import "../index.css";
 
 import App from "./pages/App";
 import Homepage from "./pages/Homepage";
+import Login from "./pages/Login";
+import { Toaster } from "sonner";
+import Crimepage from "./pages/Crimepage";
 
 const router = createBrowserRouter([
   {
