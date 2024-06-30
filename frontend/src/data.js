@@ -1,4 +1,4 @@
-export default data = [
+export const data = [
   {
     typeOfCrime: "Burglary",
     location: {

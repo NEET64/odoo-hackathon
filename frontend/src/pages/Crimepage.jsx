@@ -1,10 +1,11 @@
 import CrimeList from "@/components/CrimeList";
 import CrimeSearch from "@/components/CrimeSearch";
 import Map from "@/components/Map";
+import { data } from "@/data";
 import { useState } from "react";
 
 const Crimepage = () => {
-  const [crimes, setCrimes] = useState([]);
+  const [crimes, setCrimes] = useState(data);
   const [coordinates, setCoordinates] = useState([]);
 
   return (
