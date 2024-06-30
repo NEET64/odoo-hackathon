@@ -577,7 +577,7 @@ let data = [
     },
   },
 ];
-const CrimeList = ({crimes, setCord}) => {
+const CrimeList = ({crimes , setCord}) => {
   return (
     <div className="flex flex-col gap-2 md:-ml-2 overflow-hidden text-slate-50 border-slate-50">
       <div className="max-h-[calc(100vh-190px)] overflow-y-auto">

@@ -45,30 +45,39 @@ app.get(
   passport.authenticate("google", { scope: ["profile", "email"] })
 );
 
-app.get('/auth/google/callback',
-  passport.authenticate('google', { failureRedirect: '/login', session: true }),
+app.get(
+  "/auth/google/callback",
+  passport.authenticate("google", { failureRedirect: "/login", session: true }),
   (req, res) => {
-    res.redirect(`${process.env.FRONTEND_URL}/home`); // Redirect to your frontend app
+    res.redirect(`${process.env.FRONTEND_URL}/`); // Redirect to your frontend app
   }
 );
 
-app.post('/signup', validateSignup, passport.authenticate('local-signup'), (req, res) => {
-  if (req.user) {
-    res.status(201).json({ message: 'User created successfully!' });
-  } else {
-    res.status(400).json({ message: 'Signup failed.' });
+app.post(
+  "/signup",
+  validateSignup,
+  passport.authenticate("local-signup"),
+  (req, res) => {
+    if (req.user) {
+      res.status(201).json({ message: "User created successfully!" });
+    } else {
+      res.status(400).json({ message: "Signup failed." });
+    }
   }
-});
+);
 
-app.post('/login', validateLogin, passport.authenticate('local-login'), (req, res) => {
-  if (req.user) {
-    res.status(200).json({ message: 'Login successful!' });
-  } else {
-    res.status(401).json({ message: 'Login failed.' });
+app.post(
+  "/login",
+  validateLogin,
+  passport.authenticate("local-login"),
+  (req, res) => {
+    if (req.user) {
+      res.status(200).json({ message: "Login successful!" });
+    } else {
+      res.status(401).json({ message: "Login failed." });
+    }
   }
-});
-
-
+);
 
 const port = process.env.PORT || 3000;
 
