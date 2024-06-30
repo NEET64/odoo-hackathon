@@ -104,8 +104,7 @@ const LoginForm = () => {
                         </FormControl>
                         <Link
                           href="#"
-                          className="ml-auto inline-block text-sm underline"
-                        >
+                          className="ml-auto inline-block text-sm underline">
                           Forgot your password?
                         </Link>
                         <FormMessage />
@@ -128,22 +127,22 @@ const LoginForm = () => {
 
             <div className="text-center text-sm mb-4 mx-6 -mt-4">
               <Button className="w-full" onClick={handleGoogleLogin}>
-                Log in with Google &nbsp;
+                Log in / Sign up with Google &nbsp;
                 <FaGoogle />
               </Button>
             </div>
 
-            <div className="m-4 text-center text-sm">
+            {/* <div className="m-4 text-center text-sm">
               Don&apos;t have an account?{" "}
               <Link to="/signup" className="underline">
                 Sign up
               </Link>
-            </div>
+            </div> */}
 
             <div className="w-full text-center">
-            <h3 className="text-zinc-400">user: s@gmail.com</h3>
-            <h3 className="text-zinc-400">password: 123456</h3>
-          </div>
+              <h3 className="text-zinc-400">user: s@gmail.com</h3>
+              <h3 className="text-zinc-400">password: 123456</h3>
+            </div>
           </Form>
         </Card>
       </div>

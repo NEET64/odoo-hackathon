@@ -3,6 +3,6 @@
 @tailwind utilities;
 
 /* Target the scrollbar */
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   display: none;
-}
+} */
