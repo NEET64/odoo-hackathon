@@ -9,7 +9,7 @@ const Crimepage = () => {
   const [coordinates, setCoordinates] = useState([]);
 
   return (
-    <div className="grid  md:grid-cols-3 h-full flex-1">
+    <div className="grid md:grid-cols-3 md:h-full flex-1">
       <div className="bg-slate-800 h-96 md:h-full md:col-span-2 w-full p-2">
         <Map coordinates={coordinates} />
       </div>
